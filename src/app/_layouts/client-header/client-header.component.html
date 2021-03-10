@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><img src="../../../assets/logo_white_produze.png"></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Cadastros
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="conta-corrente">Contas Corrente</a>
+          <a class="dropdown-item" href="fornecedor">Fornecedores</a>
+          <a class="dropdown-item" href="plano-contas">Plano de contas</a>
+          <a class="dropdown-item" href="centro-custo">Centros de Custo</a>
+          <a class="dropdown-item" href="categoria-contas-a-pagar">Categorias</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Financeiro
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a [permission]="['ContasAPagar']" class="dropdown-item" href="contas-a-pagar">Contas a pagar</a>
+          <a [permission]="['ContasAPagar']" class="dropdown-item" href="contas-pagas">Contas pagas</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Contabilidade
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="conta-de-para">Mapeamento de contas</a>
+          <a class="dropdown-item" href="arquivo-entrada">Mapeamento de arquivos</a>
+          <a class="dropdown-item" href="conversao">Análise e Conversão</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" [routerLink]="['/configuracoes']" id="navbarDropdown">
+          <i class="fa fa-cog"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" [routerLink]="['/dashboard']" id="navbarDropdown">
+          <i class="fa fa-tachometer-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item">{{ currentUser.email }}</a>
+          <a class="dropdown-item" (click)="alterarUsuario()">Alterar senha</a>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="py-3">
+    <h6> Empresa: {{ currentUser.nomeEmpresa }}</h6>
+  </div>
+</div>

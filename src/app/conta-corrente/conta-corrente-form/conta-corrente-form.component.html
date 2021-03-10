@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="py-1">
+        <form [formGroup]="formAdd">
+            <div class="card card-signin">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Cadastro de Conta Corrente</h5>
+                    <div class="form-group col-md-6">
+                        <label>Banco:</label>
+                        <input type="text" maxlength="255" formControlName="banco" placeholder="Informe o banco..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.banco.errors">
+                        <p *ngIf="f.banco.errors.required" class="text-danger small">* Campo banco é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Agência:</label>
+                        <input type="text" maxlength="255" formControlName="agencia" placeholder="Informe a agência..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.agencia.errors">
+                        <p *ngIf="f.agencia.errors.required" class="text-danger small">* Campo agência é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Número do Banco:</label>
+                        <input type="text" mask="999999999" formControlName="bancoNumero"
+                            placeholder="Informe o número do banco..." class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.bancoNumero.errors">
+                        <p *ngIf="f.bancoNumero.errors.required" class="text-danger small">* Campo número do banco é
+                            obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Conta:</label>
+                        <input type="text" maxlength="255" formControlName="conta" placeholder="Informe o número da conta..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.conta.errors">
+                        <p *ngIf="f.conta.errors.required" class="text-danger small">* Campo número da conta é
+                            obrigatório</p>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Saldo inicial:</label>
+                        <input currencyMask max="999999999999999999"
+                        [options]="{ prefix: '', thousands: '.', decimal: ',', precision: 2, allowNegative: false }"
+                        maxlength="18" type="text" formControlName="saldoInicial" placeholder="Informe o saldo inicial"
+                        class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.saldoInicial.errors">
+                        <p *ngIf="f.saldoInicial.errors.required" class="text-danger small">* Campo saldo inicial é
+                            obrigatório</p>
+                    </div>
+
+                    <div *ngIf="contaCorrente.id > 0">
+                        <div class="form-group col-md-6">
+                            <label>Criado por: {{ contaCorrente.criadoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataCriacao() | date }}</label>
+                        </div>
+                    </div>
+                    <div *ngIf="contaCorrente.alteradoPor">
+                        <div class="form-group col-md-6">
+                            <label>Última alteração por: {{ contaCorrente.alteradoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataAlteracao() | date }}</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSave()">
+                            <i class="fa fa-save"></i> Salvar
+                        </button>
+                        <button type="button" class="btn btn-rounded btn-danger text-uppercase ml-2" (click)="onCancel()">
+                            <i class="fa fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

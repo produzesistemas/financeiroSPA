@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="py-1">
+    <div class="card card-signin">
+      <div class="card-body">
+        <h5>Exportações</h5>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  Partidas dobradas Sistema Domínio
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <form [formGroup]="formDominio">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Data Inicial:</label>
+                      <div class="input-group">
+                        <input class="form-control" placeholder="dd/mm/yyyy" name="dataInicial" formControlName="dataInicial"
+                          ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" (click)="d.toggle()" type="button">
+                            <i class="fa fa-calendar-alt"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div *ngIf="submittedDominio && f.dataInicial.errors">
+                        <p *ngIf="f.dataInicial.errors.required" class="text-danger small">* Selecione a data inicial do período
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Data Final:</label>
+                      <div class="input-group">
+                        <input class="form-control" placeholder="dd/mm/yyyy" name="dataFinal" formControlName="dataFinal"
+                          ngbDatepicker #dp="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" (click)="dp.toggle()" type="button">
+                            <i class="fa fa-calendar-alt"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div *ngIf="submittedDominio && f.dataFinal.errors">
+                        <p *ngIf="f.dataFinal.errors.required" class="text-danger small">* Selecione a data final do período
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row py-2">
+                    <div class="col-md-4">
+                      <button class="btn btn-rounded btn-success" type="button" (click)="onExportDominio()">
+                        <i class="fa fa-file"></i> Exportar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

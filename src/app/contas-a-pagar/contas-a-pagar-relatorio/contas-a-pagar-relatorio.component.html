@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="py-1">
+    <div class="card card-signin">
+      <div class="card-body">
+        <h5>Relatórios de contas a pagar</h5>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  Contas a pagar por Fornecedor
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <form [formGroup]="formFornecedor">
+                  <div class="row">
+
+                    <div class="col-md-4">
+                      <select class="form-control" formControlName="fornecedor">
+                        <option value="">Fornecedor</option>
+                        <option [ngValue]="fornecedor" *ngFor="let fornecedor of lstFornecedor">
+                          {{fornecedor.nome}}</option>
+                      </select>
+                      <div *ngIf="submittedFornecedor && ff.fornecedor.errors">
+                        <p *ngIf="ff.fornecedor.errors.required" class="text-danger small">* Seleção de Fornecedor é
+                          obrigatória</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <button class="btn btn-rounded btn-success" type="button" (click)="onRelFornecedor()">
+                        <i class="fa fa-file-excel"></i>
+                      </button>
+                    </div>
+
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                  aria-expanded="false" aria-controls="collapseTwo">
+                  Provisão por mês
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                <form [formGroup]="formProvisao">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <input formControlName="dataInicial" autocomplete="off" class="form-control" name="date"
+                          bsDatepicker [bsConfig]="{dateInputFormat: 'MM/YYYY'}" #d="bsDatepicker" maxLength="7"
+                          (onShown)="onOpenCalendar($event)" (keyup)="dateMask($event)">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-primary" (click)="d.toggle()" type="button">
+                            <i class="fa fa-calendar-alt"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div *ngIf="submittedProvisao && fp.dataInicial.errors">
+                        <p *ngIf="fp.dataInicial.errors.required" class="text-danger small">* Informe mês e ano para gerar relatório.</p>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-rounded btn-success" type="button" (click)="onRelProvisao()">
+                        <i class="fa fa-file-excel"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

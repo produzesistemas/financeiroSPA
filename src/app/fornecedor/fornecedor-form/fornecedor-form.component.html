@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="py-1">
+        <form [formGroup]="formAdd">
+            <div class="card card-signin">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Cadastro de Fornecedor</h5>
+                    <div class="form-group col-md-6">
+                        <label>Nome:</label>
+                        <input type="text" maxlength="255" formControlName="nome" placeholder="Informe o nome..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.nome.errors">
+                        <p *ngIf="f.nome.errors.required" class="text-danger small">* Campo nome é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>CNPJ:</label>
+                        <input type="text" formControlName="cnpj" placeholder="Informe o cnpj..."
+                            class="form-control" mask="00.000.000/0000-00" maxlength='18'>
+                    </div>
+                    <div *ngIf="submitted && f.cnpj.errors">
+                        <p *ngIf="f.cnpj.errors.required" class="text-danger small">* Campo cnpj é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Contato:</label>
+                        <input type="text" maxlength="255" formControlName="contato"
+                            placeholder="Informe o nome do contato no Fornecedor..." class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Telefone do contato:</label>
+                        <input type="text" mask="(00)00000-0000" formControlName="telefone" placeholder="Informe o telefone de contato..."
+                            class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Email:</label>
+                        <input type="text" maxlength="255" formControlName="email" placeholder="Informe o email de contato..."
+                            class="form-control">
+                    </div>
+
+
+                    <div *ngIf="fornecedor.id > 0">
+                        <div class="form-group col-md-6">
+                            <label>Criado por: {{ fornecedor.criadoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataCriacao() | date }}</label>
+                        </div>
+                    </div>
+                    <div *ngIf="fornecedor.alteradoPor">
+                        <div class="form-group col-md-6">
+                            <label>Última alteração por: {{ fornecedor.alteradoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataAlteracao() | date }}</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSave()">
+                            <i class="fa fa-save"></i> Salvar
+                        </button>
+                        <button type="button" class="btn btn-rounded btn-danger text-uppercase ml-2" (click)="onCancel()">
+                            <i class="fa fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

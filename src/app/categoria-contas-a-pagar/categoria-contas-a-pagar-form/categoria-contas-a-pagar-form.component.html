@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="py-1">
+        <form [formGroup]="formAdd">
+            <div class="card card-signin">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Cadastro de Categoria</h5>
+                    <div class="form-group col-md-6">
+                        <label>Nome:</label>
+                        <input type="text" maxlength="255" formControlName="nome" placeholder="Informe o nome..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.nome.errors">
+                        <p *ngIf="f.nome.errors.required" class="text-danger small">* Campo nome é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                          <label>Conta contábil:</label>
+                          <select class="form-control" formControlName="planoContas" (change)="onSelectPlanoContas()">
+                            <option [ngValue]="planoContas" *ngFor="let planoContas of lstPlanoContas">
+                              {{planoContas.descricao}}</option>
+                          </select>
+                    </div>
+
+
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Código
+                                            </th>
+                                            <th>
+                                                Descrição
+                                            </th>
+                                            <th>
+                                                Classificação
+                                            </th>
+                                            <th>
+                                                Ações
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            *ngFor='let item of categoriaContasAPagar.contas | slice: (page-1) * pageSize : page * pageSize'>
+                                            <td>{{ item.planoContas.id }}</td>
+                                            <td>{{ item.planoContas.descricao }}</td>
+                                            <td>{{ item.planoContas.classificacao }}</td>
+                                            <td>
+                                                <div class="d-flex actions">
+                                                    <a class="ml-2" tabindex="-1" role="button" aria-disabled="true"
+                                                        title="Excluir" (click)="deleteRow(item)">
+                                                        <i class="fa fa-trash text-danger"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="lst.length">
+                                </ngb-pagination>
+
+                            </div>
+                        </div>
+
+                    <div *ngIf="categoriaContasAPagar.id > 0">
+                        <div class="form-group col-md-6">
+                            <label>Criado por: {{ categoriaContasAPagar.criadoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataCriacao() | date }}</label>
+                        </div>
+                    </div>
+                    <div *ngIf="categoriaContasAPagar.alteradoPor">
+                        <div class="form-group col-md-6">
+                            <label>Última alteração por: {{ categoriaContasAPagar.alteradoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataAlteracao() | date }}</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSave()">
+                            <i class="fa fa-save"></i> Salvar
+                        </button>
+                        <button type="button" class="btn btn-rounded btn-danger text-uppercase ml-2" (click)="onCancel()">
+                            <i class="fa fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

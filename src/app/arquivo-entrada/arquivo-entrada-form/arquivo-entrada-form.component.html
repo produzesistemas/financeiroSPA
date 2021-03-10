@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="py-1">
+        <form [formGroup]="formAdd">
+            <div class="card card-signin">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Cadastro de mapeamento de arquivo</h5>
+                    <div class="form-group col-md-6">
+                        <label>Descrição:</label>
+                        <input type="text" maxlength="255" formControlName="descricao" placeholder="Informe a descrição..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.descricao.errors">
+                        <p *ngIf="f.descricao.errors.required" class="text-danger small">* Campo Descrição é obrigatório
+                        </p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Coluna do arquivo que contém a Data:</label>
+                        <input currencyMask max="9999" maxlength="4"
+                            [options]="{ prefix: '', thousands: '', decimal: '', precision: 0, allowNegative: false }"
+                            type="text" formControlName="colunaData" placeholder="Informe a coluna da Data..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.colunaData.errors">
+                        <p *ngIf="f.colunaData.errors.required" class="text-danger small">* Campo Data é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Coluna do arquivo que contém o histórico:</label>
+                        <input currencyMask max="9999" maxlength="4"
+                            [options]="{ prefix: '', thousands: '', decimal: '', precision: 0, allowNegative: false }"
+                            type="text" formControlName="colunaHistorico" placeholder="Informe a coluna de histórico..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.colunaHistorico.errors">
+                        <p *ngIf="f.colunaHistorico.errors.required" class="text-danger small">* Campo coluna do
+                            histórico é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Coluna do arquivo que contém o valor de débito:</label>
+                        <input currencyMask max="9999" maxlength="4"
+                            [options]="{ prefix: '', thousands: '', decimal: '', precision: 0, allowNegative: false }"
+                            type="text" formControlName="colunaValorDebito"
+                            placeholder="Informe a coluna valor débito..." class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Coluna do arquivo que contém a conta de débito:</label>
+                        <input currencyMask max="9999" maxlength="4"
+                            [options]="{ prefix: '', thousands: '', decimal: '', precision: 0, allowNegative: false }"
+                            type="text" formControlName="colunaContaDebito"
+                            placeholder="Informe a coluna da conta débito..." class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Coluna do arquivo que contém o valor de crédito:</label>
+                        <input currencyMask max="9999" maxlength="4"
+                            [options]="{ prefix: '', thousands: '', decimal: '', precision: 0, allowNegative: false }"
+                            type="text" formControlName="colunaValorCredito"
+                            placeholder="Informe a coluna do valor de crédito..." class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Coluna do arquivo que contém a conta de crédito:</label>
+                        <input currencyMask max="9999" maxlength="4"
+                            [options]="{ prefix: '', thousands: '', decimal: '', precision: 0, allowNegative: false }"
+                            type="text" formControlName="colunaContaCredito"
+                            placeholder="Informe a coluna da conta crédito..." class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Coluna do arquivo que o número do lançamento:</label>
+                        <input currencyMask max="9999" maxlength="4"
+                            [options]="{ prefix: '', thousands: '', decimal: '', precision: 0, allowNegative: false }"
+                            type="text" formControlName="colunaNLancamento"
+                            placeholder="Informe a coluna do número do lançamento..." class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.colunaNLancamento.errors">
+                        <p *ngIf="f.colunaNLancamento.errors.required" class="text-danger small">* Campo coluna do
+                            número de lançamento é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Conta transitória:</label>
+                        <input maxlength="18" type="text" formControlName="contaTransitoria"
+                            placeholder="Informe a conta transitória..." class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-check-input" type="checkbox" formControlName="isDebito" />
+                        <label class="form-check-label" for="defaultCheck1">
+                            Lançamentos de Débito:
+                        </label>
+                    </div>
+                    <div *ngIf="submitted && f.isDebito.errors">
+                        <p *ngIf="f.isDebito.errors.required" class="text-danger small">* Marque se o arquivo contém
+                            lançamentos de débito</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-check-input" type="checkbox" formControlName="isCredito" />
+                        <label class="form-check-label" for="defaultCheck1">
+                            Lançamentos de Credito:
+                        </label>
+                    </div>
+                    <div *ngIf="submitted && f.isCredito.errors">
+                        <p *ngIf="f.isCredito.errors.required" class="text-danger small">* Marque se o arquivo contém
+                            lançamentos de crédito</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-check-input" type="checkbox" formControlName="hasMapeamento" />
+                        <label class="form-check-label" for="defaultCheck1">
+                            Tem mapeamento de contas:
+                        </label>
+                    </div>
+                    <div *ngIf="submitted && f.hasMapeamento.errors">
+                        <p *ngIf="f.hasMapeamento.errors.required" class="text-danger small">* Marque se o arquivo contém
+                            mapeamento de contas</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSave()">
+                            <i class="fa fa-save"></i> Salvar
+                        </button>
+                        <button type="button" class="btn btn-rounded btn-danger text-uppercase ml-2" (click)="onCancel()">
+                            <i class="fa fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

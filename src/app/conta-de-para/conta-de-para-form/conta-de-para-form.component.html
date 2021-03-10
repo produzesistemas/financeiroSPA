@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="py-1">
+        <form [formGroup]="formAdd">
+            <div class="card card-signin">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Cadastro de Mapeamento de conta</h5>
+                    <div class="form-group col-md-6">
+                        <label>De:</label>
+                        <input type="text" formControlName="de" placeholder="Informe a conta..." class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.de.errors">
+                        <p *ngIf="f.de.errors.required" class="text-danger small">* Campo conta é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Para:</label>
+                        <input type="text" formControlName="para" placeholder="Informe a conta..." class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.para.errors">
+                        <p *ngIf="f.para.errors.required" class="text-danger small">* Campo conta é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6" *ngIf="contaDePara.id > 0">
+                        <label>Criado por: {{ contaDePara.criadoPor }}</label>
+                    </div>
+                    <div class="form-group col-md-6" *ngIf="contaDePara.id > 0">
+                        <label>Em: {{ getDataCriacao() | date }}</label>
+                    </div>
+                    <div *ngIf="contaDePara.alteradoPor">
+                        <div class="form-group col-md-6">
+                            <label>Última alteração por: {{ contaDePara.alteradoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataAlteracao() | date }}</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSave()">
+                            <i class="fa fa-save"></i> Salvar
+                        </button>
+                        <button type="button" class="btn btn-rounded btn-danger text-uppercase ml-2" (click)="onCancel()">
+                            <i class="fa fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

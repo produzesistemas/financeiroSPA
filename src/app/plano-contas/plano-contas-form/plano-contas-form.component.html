@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="py-1">
+        <form [formGroup]="formAdd">
+            <div class="card card-signin">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Cadastro de Plano de contas</h5>
+                    <div class="form-group col-md-6">
+                        <label>Tipo:</label>
+                        <select class="form-control" formControlName="tipoConta">
+                          <option [ngValue]="tipo" *ngFor="let tipo of tipos">
+                            {{tipo.nome}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.tipoConta.errors">
+                            <p *ngIf="f.tipoConta.errors.required" class="text-danger small">* Campo tipo de conta é
+                              obrigatório</p>
+                          </div>
+                      </div>
+                    <div class="form-group col-md-6">
+                        <label>Descrição:</label>
+                        <input type="text" formControlName="descricao" placeholder="Informe a descrição..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.descricao.errors">
+                        <p *ngIf="f.descricao.errors.required" class="text-danger small">* Campo descrição é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Classificação:</label>
+                        <input type="text" formControlName="classificacao" placeholder="Informe a classificação..."
+                            class="form-control" >
+                    </div>
+                    <div *ngIf="submitted && f.classificacao.errors">
+                        <p *ngIf="f.classificacao.errors.required" class="text-danger small">* Campo classificação é obrigatório</p>
+                    </div>
+                     <div *ngIf="planoContas.id > 0">
+                        <div class="form-group col-md-6">
+                            <label>Criado por: {{ planoContas.criadoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataCriacao() | date }}</label>
+                        </div>
+                    </div>
+                    <div *ngIf="planoContas.alteradoPor">
+                        <div class="form-group col-md-6">
+                            <label>Última alteração por: {{ planoContas.alteradoPor }}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Em: {{ getDataAlteracao() | date }}</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSave()">
+                            <i class="fa fa-save"></i> Salvar
+                        </button>
+                        <button type="button" class="btn btn-rounded btn-danger text-uppercase ml-2" (click)="onCancel()">
+                            <i class="fa fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
