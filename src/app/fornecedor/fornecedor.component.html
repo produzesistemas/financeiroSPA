@@ -41,7 +41,7 @@
                 <tbody>
                   <tr *ngFor='let item of lst | slice: (page-1) * pageSize : page * pageSize'>
                     <td>{{ item.nome }}</td>
-                    <td>{{ item.cnpj }}</td>
+                    <td>{{ item.cnpj | mask: '00.000.000/0000-00' }}</td>
                     <td>
                       <div class="d-flex actions">
                         <a class="ml-2" tabindex="-1" role="button" aria-disabled="true" title="Editar"

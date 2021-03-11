@@ -80,4 +80,6 @@ export class FornecedorComponent implements OnInit {
   closeDelete() {
   this.modalDelete.hide();
   }
+
+
 }
