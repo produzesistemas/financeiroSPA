@@ -21,44 +21,29 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 col-lg-12">
-            <div class="table-responsive">
-              <table class="table table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th>
-                      Codigo
-                    </th>
-                    <th>
-                      Nome
-                    </th>
-                    <th>
-                      Ações
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor='let item of lst | slice: (page-1) * pageSize : page * pageSize'>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.nome }}</td>
-                    <td>
-                      <div class="d-flex actions">
-                        <a class="ml-2" tabindex="-1" role="button" aria-disabled="true" title="Editar"
-                          (click)="edit(item)">
-                          <i class="fa fa-edit text-primary"></i>
-                        </a>
-                          <a class="ml-2" tabindex="-1" role="button" aria-disabled="true" title="Excluir"
-                          (click)="deleteById(modalDelete,item)">
-                          <i class="fa fa-trash text-danger"></i>
-                        </a>
-                      </div>
-                    </td>
-                    </tr>
-                </tbody>
-              </table>
-                <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="lst.length"></ngb-pagination>
+
+        <div *ngFor='let item of lst'>
+          <div class="py-1">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">Código:</h6>
+                <p class="card-text">{{ item.codigo }}</p>
+                <h6 class="card-title">Nome:</h6>
+                <p class="card-text">{{ item.nome }}</p>
               </div>
+              <div class="card-footer text-muted">
+                <div class="d-flex actions">
+                  <a class="ml-2" tabindex="-1" role="button" aria-disabled="true" title="Editar"
+                  (click)="edit(item)">
+                  <i class="fa fa-edit text-primary"></i>
+                </a>
+                  <a class="ml-2" tabindex="-1" role="button" aria-disabled="true" title="Excluir"
+                  (click)="deleteById(modalDelete,item)">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

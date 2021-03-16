@@ -54,8 +54,8 @@ export class AuthenticationService extends GenericHttpService<any>{
         return this.postAll('account/changePassword', user);
     }
 
-    registerClient(user) {
-        return this.postAll('account/registerClient', user);
+    register(user) {
+        return this.postAll('account/register', user);
     }
 
     logout() {
@@ -79,4 +79,8 @@ export class AuthenticationService extends GenericHttpService<any>{
     getAllRoles() {
         return this.http.get<any>(`${this.getUrlApi()}account/getRoles`);
     }
+
+    getByFilter(filter: any) {
+        return this.postAll('account/filter', filter);
+      }
 }

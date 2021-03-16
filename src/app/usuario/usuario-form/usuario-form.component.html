@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="py-1">
+        <form [formGroup]="formAdd">
+            <div class="card card-signin">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Cadastro de Usuário</h5>
+                    <div class="form-group col-md-6">
+                        <label>Email:</label>
+                        <input type="text" maxlength="255" formControlName="email" placeholder="Informe o email..."
+                            class="form-control">
+                    </div>
+                    <div *ngIf="submitted && f.email.errors">
+                        <p *ngIf="f.email.errors.required" class="text-danger small">* Campo email é obrigatório</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSave()">
+                            <i class="fa fa-save"></i>
+                        </button>
+                        <button type="button" class="btn btn-rounded btn-danger text-uppercase ml-2" (click)="onCancel()">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

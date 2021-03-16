@@ -24,6 +24,7 @@ import { ContasPagasModule } from 'src/app/contas-pagas/contas-pagas.module';
 import { QuemSomosModule } from 'src/app/quem-somos/quem-somos.module';
 import { AccessDeniedComponent } from 'src/app/access-denied/access-denied.component';
 import { AlterarUsuarioModule } from 'src/app/alterar-usuario/alterar-usuario.module';
+import { UsuarioModule } from 'src/app/usuario/usuario.module';
 
 const routes: Routes = [
   {
@@ -63,10 +64,11 @@ const routes: Routes = [
       { path: 'contas-a-pagar', loadChildren: () => ContasAPagarModule },
       { path: 'contas-pagas', loadChildren: () => ContasPagasModule },
       { path: 'categoria-contas-a-pagar', loadChildren: () => CategoriaContasAPagarModule },
-      { path: 'alterar-usuario', loadChildren: () => AlterarUsuarioModule }
+      { path: 'alterar-usuario', loadChildren: () => AlterarUsuarioModule },
+      { path: 'usuario', loadChildren: () => UsuarioModule }
          ],
      canActivate: [AuthGuard],
-     data: { expectedRole: ['Empresa','ContasAPagar','ContasAReceber'] }
+     data: { expectedRole: ['Empresa','ContasAPagar','ContasAReceber','CEO'] }
   },
   {
     path: 'access-denied',
