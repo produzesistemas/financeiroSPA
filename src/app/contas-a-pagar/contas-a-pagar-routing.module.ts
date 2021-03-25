@@ -5,7 +5,8 @@ import { ContasAPagarFormComponent } from './contas-a-pagar-form/contas-a-pagar-
 import { ContasAPagarRelatorioComponent } from './contas-a-pagar-relatorio/contas-a-pagar-relatorio.component';
 import { ContasAPagarFormModule } from './contas-a-pagar-form/contas-a-pagar-form.module';
 import { ContasAPagarRelatorioModule } from './contas-a-pagar-relatorio/contas-a-pagar-relatorio.module';
-
+import { ContasAPagarXMLComponent } from './contas-a-pagar-xml/contas-a-pagar-xml.component';
+import { ContasAPagarXMLModule } from './contas-a-pagar-xml/contas-a-pagar-xml.module';
 const routes: Routes = [
     {
         path: '',
@@ -23,6 +24,13 @@ const routes: Routes = [
         component: ContasAPagarRelatorioComponent,
         children: [
             { path: 'contas-a-pagar-relatorio', loadChildren: () => ContasAPagarRelatorioModule }
+          ]
+      },
+      {
+        path: 'contas-a-pagar-xml',
+        component: ContasAPagarXMLComponent,
+        children: [
+            { path: 'contas-a-pagar-xml', loadChildren: () => ContasAPagarXMLModule }
           ]
       }
 

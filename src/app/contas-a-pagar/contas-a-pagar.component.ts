@@ -195,6 +195,10 @@ export class ContasAPagarComponent implements OnInit {
     this.router.navigate([`/contas-a-pagar/contas-a-pagar-relatorio`]);
   }
 
+  goLancamentoNF() {
+    this.router.navigate([`/contas-a-pagar/contas-a-pagar-xml`]);
+  }
+
   deleteById(template: TemplateRef<any>, item: ContasAPagar) {
     this.contasaPagar = item;
     this.modalDelete = this.modalService.show(template, { class: 'modal-md' });

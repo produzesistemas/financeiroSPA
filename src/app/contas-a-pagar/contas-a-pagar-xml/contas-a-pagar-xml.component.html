@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="py-1">
+        <div class="card card-signin">
+          <div class="card-body">
+            <h5 class="card-title text-center">Lançamento por Nota Fiscal</h5>
+            <div class="form-group col-md-6">
+              <input #fileUpload type="file" class="form-control-file" name="fileUpload"
+                (change)="onFileChange($event)" />
+            </div>
+            <div class="form-group col-md-6">
+              <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSubmit()">
+                <i class="fa fa-cog"></i> Analisar
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  
+  <ng-template #analise>
+    <div class="inmodal" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-header">
+        <h3 class="modal-title">Análise do arquivo </h3>
+        <button type="button" class="close" (click)="close()">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onConvert()">
+          <i class="fa fa-check"></i> Converter
+        </button> -->
+        <button type="button" class="btn btn-rounded btn-default text-uppercase" (click)="close()">
+          <i class="fa fa-times"></i> Fechar
+        </button>
+      </div>
+    </div>
+  </ng-template>

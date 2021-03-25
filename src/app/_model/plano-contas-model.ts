@@ -3,6 +3,7 @@ export class PlanoContas {
     id: number;
     descricao: string;
     classificacao: string;
+    contaReduzida: number;
     ativo: boolean;
     tipoContaId: number;
     criadoPor: string;

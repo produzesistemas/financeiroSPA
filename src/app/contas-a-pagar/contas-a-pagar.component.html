@@ -3,14 +3,17 @@
     <div class="py-2">
       <h5>Contas a Pagar</h5>
       <button class="btn btn-rounded btn-primary text-uppercase" type="button" data-toggle="collapse"
-        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtros para pesquisa">
         <i class="fa fa-filter"></i>
       </button>
-      <button class="btn btn-rounded btn-primary text-uppercase ml-2" (click)="onLancManual(modalLancManual)">
+      <button class="btn btn-rounded btn-primary text-uppercase ml-2" (click)="onLancManual(modalLancManual)" title="Lançamento Manual">
         <i class="fa fa-plus"></i>
       </button>
-      <button class="btn btn-rounded btn-primary text-uppercase ml-2" type="button" (click)="goRelatorio()">
+      <button class="btn btn-rounded btn-primary text-uppercase ml-2" type="button" (click)="goRelatorio()" title="Relatórios">
       <i class="fa fa-print"></i>
+    </button>
+    <button class="btn btn-rounded btn-primary text-uppercase ml-2" type="button" (click)="goLancamentoNF()" title="Lançamento Nota Fiscal">
+      <i class="fa fa-file-code"></i>
     </button>
       <div class="collapse show" id="collapseExample">
         <div class="card card-body">

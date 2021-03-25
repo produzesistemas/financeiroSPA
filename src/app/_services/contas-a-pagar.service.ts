@@ -58,4 +58,8 @@ export class ContasAPagarService extends GenericHttpService<ContasAPagar> {
         responseType: 'arraybuffer'
       });
   }
+
+  lancamentoNF(formData: FormData) {
+    return this.postAll('contasaPagar/lancamentonf', formData);
+  }
 }

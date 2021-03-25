@@ -42,7 +42,6 @@ export class PlanoContasComponent implements OnInit {
     this.form = this.formBuilder.group({
       descricao: ['']
     });
-    this.onSubmit();
   }
 
   get f() { return this.form.controls; }
