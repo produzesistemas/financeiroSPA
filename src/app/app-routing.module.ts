@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DefaultLayoutComponent } from 'src/app/_layouts/default-layout/default-layout.component';
 import { AppLayoutComponent } from 'src/app/_layouts/app-layout/app-layout.component';
 import { ClientLayoutComponent } from 'src/app/_layouts/client-layout/client-layout.component';
+import { AccountingLayoutComponent } from 'src/app/_layouts/accounting-layout/accounting-layout.component';
 import { DefaultModule } from 'src/app/default/default.module';
 import { LoginAdmModule } from 'src/app/login-adm/login-adm.module';
 import { LoginEmpresaModule } from 'src/app/login-empresa/login-empresa.module';
@@ -53,9 +54,6 @@ const routes: Routes = [
     component: ClientLayoutComponent,
     children: [
       { path: 'dashboard', loadChildren: () => DashboardModule },
-      { path: 'arquivo-entrada', loadChildren: () => ArquivoEntradaModule },
-      { path: 'conversao', loadChildren: () => ConversaoModule },
-      { path: 'conta-de-para', loadChildren: () => ContaDeParaModule },
       { path: 'conta-corrente', loadChildren: () => ContaCorrenteModule },
       { path: 'fornecedor', loadChildren: () => FornecedorModule },
       { path: 'plano-contas', loadChildren: () => PlanoContasModule },
@@ -69,6 +67,17 @@ const routes: Routes = [
          ],
      canActivate: [AuthGuard],
      data: { expectedRole: ['Empresa','ContasAPagar','ContasAReceber','CEO'] }
+  },
+  {
+    path: '',
+    component: AccountingLayoutComponent,
+    children: [
+      { path: 'arquivo-entrada', loadChildren: () => ArquivoEntradaModule },
+      { path: 'conversao', loadChildren: () => ConversaoModule },
+      { path: 'conta-de-para', loadChildren: () => ContaDeParaModule },
+         ],
+     canActivate: [AuthGuard],
+     data: { expectedRole: ['Escritorio','Tesouraria'] }
   },
   {
     path: 'access-denied',

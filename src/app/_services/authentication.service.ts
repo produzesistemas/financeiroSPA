@@ -83,4 +83,8 @@ export class AuthenticationService extends GenericHttpService<any>{
     getByFilter(filter: any) {
         return this.postAll('account/filter', filter);
       }
+
+      registerPartner(user: ApplicationUser) {
+        return this.postAll('account/registerPartner', user);
+    }
 }

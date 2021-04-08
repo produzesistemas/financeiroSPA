@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Empresa } from 'src/app/_model/empresa-model';
 import { ConfiguracoesService } from 'src/app/_services/configuracoes.service';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../environments/environment';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuracoes',
@@ -19,9 +20,9 @@ export class ConfiguracoesComponent implements OnInit {
   public file: any;
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
     private toastr: ToastrService,
-    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
+    private router: Router,
     private configuracoesService: ConfiguracoesService
   ) { }
 
@@ -30,10 +31,9 @@ export class ConfiguracoesComponent implements OnInit {
   ngOnInit() {
     this.formAdd = this.formBuilder.group({
       nome: ['',  Validators.required],
-      email: ['',  Validators.required],
       cnpj: ['',  Validators.required],
-      nomeUsuarioDominio: ['',  Validators.required],
-      codigoFilial: ['',  Validators.required],
+      nomeUsuarioDominio: [''],
+      codigoFilial: [''],
       contaTransitoria: [''],
       id: [0]
       });
@@ -46,8 +46,6 @@ export class ConfiguracoesComponent implements OnInit {
             this.logo = environment.urlImagesEmpresas + result.nomeImagem;
           }
           this.formAdd.controls.nome.setValue(result.nome);
-          this.formAdd.controls.email.setValue(result.email);
-          this.formAdd.controls.email.disable();
           this.formAdd.controls.cnpj.setValue(result.cnpj);
           this.formAdd.controls.cnpj.disable();
           this.formAdd.controls.nomeUsuarioDominio.setValue(result.nomeUsuarioDominio);
@@ -71,6 +69,7 @@ export class ConfiguracoesComponent implements OnInit {
       formData.append('file', this.file);
       this.configuracoesService.save(formData).subscribe(result => {
         this.toastr.success('Registro efetuado com sucesso!');
+        this.logout();
     });
     }
 
@@ -78,6 +77,11 @@ export class ConfiguracoesComponent implements OnInit {
       if (event.target.files.length > 0) {
         this.file = event.target.files[0];
       }
+    }
+
+    logout() {
+      this.authenticationService.logout();
+      this.router.navigate(['login-empresa']);
     }
 }
 

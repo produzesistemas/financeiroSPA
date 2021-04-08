@@ -45,6 +45,11 @@ export class AuthGuard implements CanActivate {
                 return true;
             }
         }
+
+        if (!found) {
+            return this.accessDenied();
+        }
+
         return found;
     }
 

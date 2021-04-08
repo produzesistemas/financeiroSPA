@@ -1,16 +1,14 @@
 <div class="container">
     <div class="py-1">
         <form [formGroup]="formAdd">
-            <div class="card card-signin">
+            <div class="card card-signin col-md-6">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Configurações</h5>
-                    <div>
+                    <h5 class="card-title text-center">Dados da Empresa</h5>
+                    <div class="form-group col-md-12">
                         <img *ngIf="logo" class="img-thumbnail" src={{logo}} width="100px" height="100px">
-                      </div>
-                      <div class="form-group">
                         <input type="file" class="form-control-file" name="fileUpload" (change)="onFileChange($event)" />
                       </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
                         <label>Nome:</label>
                         <input type="text" maxlength="255" formControlName="nome" placeholder="Informe o nome..." class="form-control">
                     </div>
@@ -18,17 +16,7 @@
                         <p *ngIf="f.nome.errors.required" class="text-danger small">* Campo Nome é obrigatório</p>
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label>Usuário no sistema Domínio:</label>
-                        <input type="text" maxlength="30" formControlName="nomeUsuarioDominio"
-                            placeholder="Informe o usuário..." class="form-control">
-                    </div>
-                    <div *ngIf="submitted && f.nomeUsuarioDominio.errors">
-                        <p *ngIf="f.nomeUsuarioDominio.errors.required" class="text-danger small">* Campo Usuário é
-                            obrigatório</p>
-                    </div>
-
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-12">
                         <label>CNPJ:</label>
                         <input type="text" formControlName="cnpj" placeholder="Informe o CNPJ..." class="form-control"
                             mask="00.000.000/0000-00" maxlength='18'>
@@ -37,33 +25,29 @@
                         <p class="text-danger small" *ngIf="f.cnpj.errors.required">* Informe o CNPJ</p>
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
+                        <label>Usuário no sistema Domínio:</label>
+                        <input type="text" maxlength="30" formControlName="nomeUsuarioDominio"
+                            placeholder="Informe o usuário caso tenha integração com o Sistema Domínio" class="form-control">
+                    </div>
+
+
+
+                    <div class="form-group col-md-12">
                         <label>Código da filial no sistema Domínio:</label>
                         <input currencyMask max="99999999" maxlength="8"
                             [options]="{ prefix: '', thousands: '', decimal: '', precision: 0, allowNegative: false }"
                             type="text" formControlName="codigoFilial" placeholder="Informe o código..."
                             class="form-control">
                     </div>
-                    <div *ngIf="submitted && f.codigoFilial.errors">
-                        <p *ngIf="f.codigoFilial.errors.required" class="text-danger small">* Campo código da filial é
-                            obrigatório</p>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Email do responsável:</label>
-                        <input type="text" formControlName="email" placeholder="Informe o email..."
-                            class="form-control">
-                    </div>
-                    <div *ngIf="submitted && f.email.errors">
-                        <p *ngIf="f.email.errors.required" class="text-danger small">* Campo Email é obrigatório</p>
-                    </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
                         <label>Conta transitória:</label>
                         <input maxlength="18" type="text" formControlName="contaTransitoria"
                             placeholder="Informe a conta transitória..." class="form-control">
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <button type="button" class="btn btn-rounded btn-primary text-uppercase" (click)="onSave()">
+                    <div class="form-group col-md-12">
+                        <button type="button" class="btn btn-outline-primary text-uppercase" (click)="onSave()">
                             <i class="fa fa-save"></i> Salvar
                         </button>
                     </div>

@@ -30,21 +30,9 @@
           <a [permission]="['ContasAPagar']" class="dropdown-item" href="contas-pagas">Contas pagas</a>
         </div>
       </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Contabilidade
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="conta-de-para">Mapeamento de contas</a>
-          <a class="dropdown-item" href="arquivo-entrada">Mapeamento de arquivos</a>
-          <a class="dropdown-item" href="conversao">Análise e Conversão</a>
-        </div>
-      </li>
       <li class="nav-item">
         <a class="nav-link text-white" [routerLink]="['/configuracoes']" id="navbarDropdown">
-          <i class="fa fa-cog"></i>
+          <i class="fa fa-house-user"></i>
         </a>
       </li>
       <li class="nav-item">
@@ -68,6 +56,6 @@
 </nav>
 <div class="container">
   <div class="py-3">
-    <h6> Empresa: {{ currentUser.nomeEmpresa }}</h6>
+    <h6 *ngIf="currentUser.nomeEmpresa"> Empresa: {{ currentUser.nomeEmpresa }}</h6>
   </div>
 </div>
